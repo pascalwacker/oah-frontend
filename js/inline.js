@@ -83,17 +83,6 @@ doc.on('ready', function() {
         });
     });
     
-    jQuery(window).on('resize', function() {
-        jQuery('.oah-masonry').each(function() {
-            jQuery(this).masonry();
-        });
-        window.setTimeout(function() {
-            jQuery('.oah-masonry').each(function() {
-                jQuery(this).masonry();
-            });
-        }, 1000);
-    });
-    
     // init
     if (doc.scrollTop() === 0) {
         body.removeClass('oah-scroll');
@@ -110,6 +99,8 @@ doc.on('ready', function() {
         autoplayHoverPause: true,
         items: jQuery('.sponsors > .item').length
     });
+    
+    jQuery(window).trigger('footerResize');
 });
 
 jQuery(window).on('load', function() {
@@ -118,5 +109,27 @@ jQuery(window).on('load', function() {
         jQuery('html, body').animate({
             scrollTop: jQuery('#' + pathName).offset().top - jQuery('#oah-header').height()
         }, 2000);
+    }
+    
+    jQuery(window).trigger('footerResize');
+}).on('resize', function() {
+    jQuery('.oah-masonry').each(function() {
+        jQuery(this).masonry();
+    });
+    window.setTimeout(function() {
+        jQuery('.oah-masonry').each(function() {
+            jQuery(this).masonry();
+        });
+    }, 1000);
+    
+    jQuery(window).trigger('footerResize');
+}).on('footerResize', function() {
+    var h = jQuery('#footer').outerHeight(true);
+    if (h < window.innerHeight) {
+        jQuery('body').addClass('oah-fancy-footer');
+        jQuery('.footer-wrapper').height(h);
+    } else {
+        jQuery('body').removeClass('oah-fancy-footer');
+        jQuery('.footer-wrapper').css('height', 'auto');
     }
 });

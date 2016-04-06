@@ -6,6 +6,11 @@
     background: #3BD42E;
 }
 
+.bg-gray {
+    background: #333333;
+    color: #FFFFFF;
+}
+
 body, * {
     -webkit-transition: all 0.7s ease-in-out;
     -moz-transition: all 0.7s ease-in-out;
@@ -50,6 +55,12 @@ h2 {
     font-size: 8rem;
     font-family: montserratextrabold;
     font-weight: normal;
+}
+
+#content {
+    z-index: 5;
+    position: relative;
+    background: #FFFFFF;
 }
 
 .grid-sizer {
@@ -283,6 +294,38 @@ body.oah-scroll .oah-header-nav ul > li {
 
 .sponsors, .sponsors figure img {
     max-height: 15rem;
+}
+
+#footer {
+    padding-top: 10rem;
+    padding-bottom: 8rem;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+}
+
+#footer a {
+    color: #999999;
+}
+
+#footer a:hover {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+.oah-fancy-footer #footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    padding-top: 10rem;
+    padding-bottom: 8rem;
+}
+
+.fb-page, 
+.fb-page span, 
+.fb-page span iframe { 
+    max-width: 100% !important; 
 }
 
 @media (min-width: 992px) {
