@@ -67,19 +67,31 @@ doc.on('ready', function() {
                     masonry.find('.grid-item').show();
                 }
                 
-                masonry.masonry('layout');
+                masonry.masonry();
             });
         }
         
         masonry.masonry({
             itemSelector: '.grid-item',
             columnWidth: '.grid-sizer',
-            percentPosition: true
+            percentPosition: true,
+            resize: false
         });
 
         masonry.imagesLoaded().progress( function() {
             masonry.masonry('layout');
         });
+    });
+    
+    jQuery(window).on('resize', function() {
+        jQuery('.oah-masonry').each(function() {
+            jQuery(this).masonry();
+        });
+        window.setTimeout(function() {
+            jQuery('.oah-masonry').each(function() {
+                jQuery(this).masonry();
+            });
+        }, 1000);
     });
     
     // init
@@ -88,6 +100,16 @@ doc.on('ready', function() {
     } else {
         body.addClass('oah-scroll');
     }
+    
+    jQuery('.sponsors').owlCarousel({
+        loop: true,
+        margin: 15,
+        autoWidth: true,
+        autoplay: true,
+        autoplayTimeoute: 7000,
+        autoplayHoverPause: true,
+        items: jQuery('.sponsors > .item').length
+    });
 });
 
 jQuery(window).on('load', function() {

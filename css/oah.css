@@ -258,10 +258,31 @@ body.oah-scroll .oah-header-nav ul > li {
     margin: 1rem 1rem 0 1rem;
 }
 
+.oah-news-item-text p a {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+.oah-news-item-text p a:hover {
+    text-decoration: none;
+}
+
 .oah-hover-target {
     background: rgba(255, 255, 255, 0.7);
     color: #000000;
     padding: 2.5rem 3rem;
+}
+
+.sponsors {
+    overflow: hidden;
+}
+
+.sponsors figure {
+    height: 15rem;
+}
+
+.sponsors, .sponsors figure img {
+    max-height: 15rem;
 }
 
 @media (min-width: 992px) {
