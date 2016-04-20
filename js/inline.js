@@ -22,13 +22,19 @@ doc.on('ready', function() {
     });
     
     jQuery('.oah-header-nav-item a, .oah-nav ul a').on('click', function(e) {
-        e.preventDefault();
         var hash = jQuery(this).attr('href');
-        jQuery('html, body').animate({
-            scrollTop: jQuery(hash).offset().top - header.height()
-        }, 2000);
-        if (window.history.pushState) {
-            window.history.pushState({}, document.title, hash.replace('#', '/'));
+        if (hash.indexOf('#') > -1) {
+            hash = hash.substr(hash.indexOf('#'));
+            var target = jQuery(hash);
+            if (target.length) {
+                e.preventDefault();
+                jQuery('html, body').animate({
+                    scrollTop: target.offset().top - header.height()
+                }, 2000);
+                if (window.history.pushState) {
+                    window.history.pushState({}, document.title, hash.replace('#', '/'));
+                }
+            }
         }
     });
     
